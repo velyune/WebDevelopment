@@ -47,6 +47,7 @@
                     <option value="completed">Успешно</option>
                     <option value="pending">В обработке</option>
                     <option value="failed">Ошибка</option>
+                    <option value="refunded">Возврат</option>
                 </select>
             </div>
 
@@ -79,7 +80,7 @@
                         </td>
                         <td>
                             <div class="payment-meta">
-                                <span class="text-bold" style="font-size: 0.95rem; color: var(--text-main);">Подписка Premium</span>
+                                <span class="text-bold" style="font-size: 0.95rem; color: var(--text-main);">Подписка Premium (30 дней)</span>
                                 <span>ID: #88349-221</span>
                             </div>
                         </td>
@@ -87,7 +88,15 @@
                         <td>Visa •• 4242</td>
                         <td><span class="status-badge status-success">Оплачено</span></td>
                         <td style="text-align: right;">
-                            <button class="btn btn-outline btn-sm">🧾 Чек</button>
+                            <a 
+                                *ngIf="payment.AttachmentFileUrl"
+                                [href]="payment.AttachmentFileUrl"
+                                target="_blank"
+                                class="btn btn-outline btn-sm"
+                                [title]="payment.AttachmentFileName">
+                                
+                                🧾 Чек
+                            </a>
                         </td>
                     </tr>
                 </tbody>
