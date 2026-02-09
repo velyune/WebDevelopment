@@ -717,3 +717,140 @@ input:checked + .slider:before {
 .empty-state p {
     font-size: 1.1rem;
 }
+
+/* ========== SIDEBAR NAV LAYOUT ========== */
+nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: calc(100vh - 100px);
+}
+
+nav a.menu-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-item-logout {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========== ADMIN MENU PAGE ========== */
+.admin-menu-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.admin-menu-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.admin-menu-header h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.admin-menu-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+.admin-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.admin-menu-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.admin-menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.admin-menu-card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.admin-menu-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.admin-menu-card-desc {
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.admin-menu-footer {
+    margin-top: 2.5rem;
+    text-align: center;
+}
+
+.admin-menu-logout {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.admin-menu-logout:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ========== ADMIN MENU RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .admin-menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-menu-header h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .admin-menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
