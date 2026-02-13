@@ -1,313 +1,175 @@
-/* 1. ОСНОВНЫЕ СТИЛИ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #f8fafc;
-    color: #1e293b;
+    background: #f0f2f5;
+    padding: 20px;
 }
 
-/* 2. ШАПКА */
 .header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-.logo i {
-    font-size: 28px;
-    color: #2563eb;
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .logout-btn {
-    padding: 8px 16px;
-    background: #ef4444;
+    background: #e74c3c;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 8px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.logout-btn:hover {
-    background: #dc2626;
-}
-
-/* 3. ОСНОВНОЙ КОНТЕЙНЕР */
-.container {
+.main {
     display: flex;
-    min-height: 80vh;
-    padding: 20px;
     gap: 20px;
 }
 
-/* 4. БОКОВОЕ МЕНЮ */
-.sidebar {
-    width: 250px;
+.menu {
+    width: 200px;
     background: white;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 10px;
 }
 
-.sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px;
+.menu-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
-    text-decoration: none;
-    color: #64748b;
-    border-radius: 8px;
-    transition: all 0.3s;
-}
-
-.sidebar a.active,
-.sidebar a:hover {
-    background: #2563eb;
+.menu-item.active {
+    background: #3498db;
     color: white;
 }
 
 .tariff {
-    background: linear-gradient(135deg, #60a5fa, #3b82f6);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
     margin-top: 20px;
 }
 
-.tariff h3 {
-    margin-bottom: 10px;
-}
-
 .pay-btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    background: white;
-    color: #2563eb;
+    background: #27ae60;
+    color: white;
     border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.pay-btn:hover {
-    background: #f1f5f9;
-}
-
-/* 5. ОСНОВНАЯ ЧАСТЬ */
-.main {
+.content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Фильтры */
-.filters {
-    display: flex;
-    gap: 15px;
     background: white;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 10px;
 }
 
 .search {
-    flex: 1;
     display: flex;
-    align-items: center;
-    background: #f1f5f9;
-    padding: 10px 15px;
-    border-radius: 8px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .search input {
-    border: none;
-    background: transparent;
-    margin-left: 10px;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.filters select {
-    padding: 10px 15px;
-    border-radius: 6px;
-    border: 1px solid #cbd5e1;
-    background: white;
-}
-
-.filter-btn {
-    padding: 10px 20px;
-    background: #10b981;
+.search-btn {
+    background: #3498db;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.filter-btn:hover {
-    background: #059669;
-}
-
-/* Таблица */
-.orders {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.orders h2 {
-    color: #1e293b;
-    margin-bottom: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-    background: #f8fafc;
-    font-weight: 600;
-    color: #475569;
+    background: #f8f9fa;
 }
 
-tr:hover {
-    background: #f8fafc;
-}
-
-/* Статусы */
 .status {
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 3px 8px;
+    border-radius: 12px;
     font-size: 14px;
-    font-weight: 500;
-    display: inline-block;
 }
 
 .status.new {
-    background: #fef3c7;
-    color: #92400e;
+    background: #ffeaa7;
+    color: #d35400;
 }
 
 .status.work {
-    background: #dbeafe;
-    color: #1e40af;
+    background: #a8e6cf;
+    color: #27ae60;
 }
 
-.status.completed {
-    background: #dcfce7;
-    color: #166534;
-}
-
-/* Кнопки действий */
-.action-btn {
-    padding: 8px 15px;
+.take-btn, .docs-btn {
+    padding: 5px 10px;
     border: none;
-    border-radius: 6px;
+    border-radius: 3px;
     cursor: pointer;
-    margin-right: 5px;
-    font-size: 14px;
-    transition: 0.3s;
 }
 
 .take-btn {
-    background: #10b981;
+    background: #27ae60;
     color: white;
-}
-
-.take-btn:hover {
-    background: #059669;
 }
 
 .docs-btn {
-    background: #8b5cf6;
+    background: #8e44ad;
     color: white;
 }
 
-.docs-btn:hover {
-    background: #7c3aed;
-}
-
-.done-btn {
-    background: #f59e0b;
-    color: white;
-}
-
-.done-btn:hover {
-    background: #d97706;
-}
-
-/* Статистика */
 .stats {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.stat-card {
+.stat {
+    background: #ecf0f1;
+    padding: 10px 15px;
+    border-radius: 5px;
     flex: 1;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
 }
 
-.stat-card:hover {
-    transform: translateY(-5px);
-}
-
-.stat-card h3 {
-    font-size: 32px;
-    color: #2563eb;
-    margin-bottom: 5px;
-}
-
-.stat-card p {
-    color: #64748b;
-    font-size: 14px;
-}
-
-/* 6. МОДАЛЬНОЕ ОКНО */
 .modal {
     display: none;
     position: fixed;
@@ -318,74 +180,29 @@ tr:hover {
     background: rgba(0,0,0,0.5);
     justify-content: center;
     align-items: center;
-    z-index: 1000;
 }
 
 .modal-content {
     background: white;
-    padding: 30px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
 }
 
-.doc-list {
-    list-style: none;
-    margin: 20px 0;
-}
-
-.doc-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background: #f8fafc;
-    margin-bottom: 10px;
-    border-radius: 6px;
-}
-
-.download-btn {
-    padding: 6px 12px;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
+.modal-content p {
+    padding: 10px;
+    margin: 5px 0;
+    background: #f8f9fa;
+    border-radius: 5px;
 }
 
 .close-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #64748b;
+    background: #7f8c8d;
     color: white;
     border: none;
-    border-radius: 6px;
-    cursor: pointer;
+    padding: 8px;
     width: 100%;
-    transition: 0.3s;
-}
-
-.close-btn:hover {
-    background: #475569;
-}
-
-/* 7. АДАПТИВ */
-@media (max-width: 900px) {
-    .container {
-        flex-direction: column;
-    }
-    
-    .sidebar {
-        width: 100%;
-    }
-    
-    .stats {
-        flex-direction: column;
-    }
-    
-    .filters {
-        flex-wrap: wrap;
-    }
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
 }
