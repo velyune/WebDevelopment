@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [LandingPageComponent, PaymentHistoryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+  currentView: 'landing' | 'payment-history' = 'landing';
+}

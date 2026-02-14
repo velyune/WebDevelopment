@@ -1,1 +1,5 @@
-<router-outlet />
+@if (currentView === 'landing') {
+  <app-landing-page (navigate)="currentView = $event" />
+} @else {
+  <app-payment-history (navigate)="currentView = $event" />
+}

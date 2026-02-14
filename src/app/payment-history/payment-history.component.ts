@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-payment-history',
   standalone: true,
-  imports: [RouterLink],
   templateUrl: './payment-history.component.html',
   styleUrl: './payment-history.component.css',
 })
-export class PaymentHistoryComponent {}
+export class PaymentHistoryComponent {
+  navigate = output<'landing' | 'payment-history'>();
+}
