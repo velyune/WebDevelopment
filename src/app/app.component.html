@@ -1,5 +1,14 @@
-@if (currentView === 'landing') {
-  <app-landing-page (navigate)="currentView = $event" />
+@if (!authService.isLoggedIn()) {
+  <app-login />
 } @else {
-  <app-payment-history (navigate)="currentView = $event" />
+  <div class="main">
+    <header class="main-header">
+      <button type="button" class="btn-logout" (click)="authService.logout()">Выйти</button>
+    </header>
+    @if (currentView === 'landing') {
+      <app-landing-page (navigate)="currentView = $event" />
+    } @else {
+      <app-payment-history (navigate)="currentView = $event" />
+    }
+  </div>
 }
