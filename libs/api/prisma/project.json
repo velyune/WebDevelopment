@@ -5,14 +5,46 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+    "status": {
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/libs/api/prisma",
-        "main": "libs/api/prisma/src/index.ts",
-        "tsConfig": "libs/api/prisma/tsconfig.lib.json",
-        "assets": ["libs/api/prisma/*.md"]
+        "command": "prisma migrate status",
+        "cwd": "libs/api/prisma"
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma migrate dev",
+        "cwd": "libs/api/prisma"
+      }
+    },
+    "studio": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma studio",
+        "cwd": "libs/api/prisma"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma migrate deploy",
+        "cwd": "libs/api/prisma"
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma generate",
+        "cwd": "libs/api/prisma"
+      }
+    },
+    "seed": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prisma db seed",
+        "cwd": "libs/api/prisma"
       }
     }
   }
