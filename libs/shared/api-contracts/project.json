@@ -14,6 +14,20 @@
         "tsConfig": "libs/shared/api-contracts/tsconfig.lib.json",
         "assets": ["libs/shared/api-contracts/*.md"]
       }
+    },
+    "lint-proto": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "buf lint",
+        "cwd": "libs/shared/api-contracts"
+      }
+    },
+    "breaking-proto": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "buf breaking --against \"../../../.git#branch=origin/main,subdir={projectRoot}\"",
+        "cwd": "libs/shared/api-contracts"
+      }
     }
   }
 }
