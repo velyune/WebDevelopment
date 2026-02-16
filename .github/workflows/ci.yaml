@@ -16,47 +16,54 @@ permissions:
   actions: read
   contents: read
 
-jobs:
-  main:
-    runs-on: ubuntu-latest
-    env:
+env:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.29.3
-          run_install: false
-
-      # Cache node_modules
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Derive appropriate SHAs
-        uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: 'main'
+      - name: Setup pnpm & Node
+        uses: ./.github/actions/setup
 
       - name: Format
         run: pnpm exec nx affected -t format:check --parallel=3
 
-      - name: Proto Breaking Changes
-        run: pnpm exec nx affected -t breaking-proto --parallel=3
+      - name: Lint
+        run: pnpm exec nx affected -t lint stylelint --parallel=3
+
+  proto:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm & Node
+        uses: ./.github/actions/setup
 
       - name: Lint
-        run: pnpm exec nx affected -t lint stylelint lint-proto --parallel=3
+        run: pnpm exec nx affected -t lint-proto --parallel=3
+
+      - name: Breaking Changes
+        run: pnpm exec nx affected -t breaking-proto --parallel=3
+
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm & Node
+        uses: ./.github/actions/setup
 
       - name: Test
         run: pnpm exec nx affected -t test --parallel=3
@@ -64,7 +71,16 @@ jobs:
       - name: Build
         run: pnpm exec nx affected -t build --parallel=3
 
-      # Nx Cloud recommends fixes for failures to help you get CI green faster
+  self-healing-ci:
+    needs: [code-quality, proto, test-and-build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm & Node
+        uses: ./.github/actions/setup
+
       - name: Self-Healing CI
         run: pnpm exec nx fix-ci
-        if: always()

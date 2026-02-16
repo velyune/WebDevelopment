@@ -47,6 +47,34 @@
     }
   ],
   "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
+      "outputs": ["{projectRoot}/dist", "{workspaceRoot}/dist/{projectRoot}"]
+    },
+
+    "test": {
+      "cache": true,
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.config.ts"]
+    },
+
+    "lint": {
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
+    },
+    "stylelint": {
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/.stylelintrc(/.json|/.js|/.yml)?"]
+    },
+
+    "lint-proto": {
+      "cache": true
+    },
+    "breaking-proto": {
+      "cache": true
+    },
+
     "@angular/build:application": {
       "cache": true,
       "dependsOn": ["^build"],
