@@ -2,7 +2,7 @@
 
 ---
 
-## 1. Пользователи (Users)
+## 1. Пользователь (User)
 
 - `Id` (UUID, PK) — уникальный идентификатор пользователя
 - `Email` (varchar, unique) — электронная почта
@@ -14,7 +14,7 @@
 - `CreatedAt` (timestamp) — дата регистрации
 - `UpdatedAt` (timestamp) — дата последнего обновления
 
-## 2. Заявки на оценку (Assessments)
+## 2. Заявка на оценку (Assessment)
 
 - `Id` (UUID, PK) — уникальный идентификатор заявки
 - `UserId` (UUID, FK) — наследник, подавший заявку
@@ -25,7 +25,7 @@
 - `Description` (text) — описание объекта наследства
 - `EstimatedValue` (numeric) — оценочная стоимость, если уже рассчитана
 
-## 3. Документы (Documents)
+## 3. Документ (Document)
 
 - `Id` (UUID, PK) — уникальный идентификатор документа
 - `AssessmentId` (UUID, FK) — заявка, к которой относится документ
@@ -36,7 +36,7 @@
 - `UploadedAt` (timestamp) — дата загрузки
 - `UploadedBy` (UUID, FK) — пользователь, загрузивший документ
 
-## 4. Подписки (Subscriptions)
+## 4. Подписка (Subscription)
 
 - `Id` (UUID, PK) — идентификатор подписки
 - `UserId` (UUID, FK) — нотариус
@@ -45,10 +45,11 @@
 - `EndDate` (date) — дата окончания
 - `IsActive` (boolean) — активность подписки
 
-## 5. Платежи (Payments)
+## 5. Платёж (Payment)
 
 - `Id` (UUID, PK) — идентификатор платежа
 - `UserId` (UUID, FK) — пользователь
+- `Type` (enum: Subscription, Assessment, DocumentCopy) — тип
 - `SubscriptionId` (UUID, FK, nullable) — привязка к подписке
 - `AssessmentId` (UUID, FK, nullable) — привязка к заявке
 - `Amount` (numeric) — сумма платежа
@@ -59,7 +60,7 @@
 - `AttachmentFileName` (varchar) — название чека
 - `AttachmentFileUrl` (varchar) — ссылка на чек
 
-## 6. Отчёты об оценке (AssessmentReports)
+## 6. Отчёт об оценке (AssessmentReport)
 
 - `Id` (UUID, PK) — идентификатор отчёта
 - `AssessmentId` (UUID, FK) — заявка
@@ -69,7 +70,7 @@
 - `SignatureData` (bytea) — цифровая подпись
 - `Version` (integer) — версия отчёта
 
-## 7. Уведомления (Notifications)
+## 7. Уведомление (Notification)
 
 - `Id` (UUID, PK) — идентификатор уведомления
 - `UserId` (UUID, FK) — получатель
@@ -78,7 +79,7 @@
 - `SentAt` (timestamp) — время отправки
 - `Status` (enum: Pending, Sent, Failed) — статус доставки
 
-## 8. Логи действий (AuditLogs)
+## 8. Лог действий (AuditLog)
 
 - `Id` (UUID, PK) — идентификатор лога
 - `UserId` (UUID, FK) — пользователь, инициировавший действие
@@ -88,15 +89,15 @@
 - `Timestamp` (timestamp) — время действия
 - `Details` (jsonb) — дополнительные данные
 
-## 9. Промокоды (Promos)
+## 9. Промокод (Promo)
 
 - `Id` (UUID, PK) — идентификатор промокода
 - `Code` (varchar) - код
 - `Description` (text) - описание промокода
 
-## 9. Скидки (Sales)
+## 9. Скидка (Sale)
 
-- `Id` (UUID, PK) — идентификатор промокода
+- `Id` (UUID, PK) — идентификатор скидки
 - `SourceId` (UUID, FK) - ID промокода или товара, если есть
 - `StartDate` (date) — дата начала
 - `EndDate` (date) — дата окончания
