@@ -683,3 +683,19 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeData();
     renderUsers();
 });
+
+// ========== ГЛОБАЛЬНЫЙ ЭКСПОРТ (вызовы из HTML) ==========
+window.changePage = changePage;
+window.filterUsers = filterUsers;
+window.viewUser = viewUser;
+window.showCreateForm = showCreateForm;
+window.editFromView = editFromView;
+window.saveUser = saveUser;
+window.deleteFromView = deleteFromView;
+window.confirmDelete = confirmDelete;
+window.toggleSidebar = toggleSidebar;
+window.showList = showList;
+window.editUser = editUser;
+window.deleteUser = deleteUser;
+window.closeModal = closeModal;
+window.closeDeleteModal = closeDeleteModal;
